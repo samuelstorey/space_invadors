@@ -71,7 +71,7 @@ Alien.prototype.step = function(dt) {
     }
     this.x += this.mx;
     this.mx = 0;
-    this.frame = (this.frame+1) % 2;
+    this.frame = (this.frame) % 2;
     if(this.x > Game.width - Sprites.map.alien1.w * 2) this.flock.hit = -1;
     if(this.x < Sprites.map.alien1.w) this.flock.hit = 1;
   }
@@ -106,6 +106,12 @@ Player.prototype.step = function(dt) {
 
   if(this.x < 0) this.x = 0;
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
+    
+    if(Game.keys['up']) { this.y -= 100 * dt; }
+  if(Game.keys['down']) { this.y += 100 * dt; }
+
+  if(this.y < 0) this.y = 0;
+  if(this.y > Game.height-this.h) this.y = Game.height-this.h;
 
   this.reloading--;
 
