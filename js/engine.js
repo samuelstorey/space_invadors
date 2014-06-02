@@ -1,7 +1,6 @@
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
+  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 38:'up', 40:'down'}; 
   this.keys = {};
-
   this.initialize = function(canvas_dom,level_data,sprite_data,callbacks) {
     this.canvas_elem = $(canvas_dom)[0];
     this.canvas = this.canvas_elem.getContext('2d');
@@ -24,9 +23,9 @@ var Game = new function() {
   this.loadBoard = function(board) { Game.board = board; };
 
   this.loop = function() { 
-    Game.board.step(30/1000); 
+    Game.board.step(50/1000); 
     Game.board.render(Game.canvas);
-    setTimeout(Game.loop,3);
+    setTimeout(Game.loop,10);
       
 //      this is the bit that makes the game go faster
   };

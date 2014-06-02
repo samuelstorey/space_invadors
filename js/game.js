@@ -3,7 +3,7 @@ var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
   this.dx = 10; this.dy = 0;
   this.hit = 1; this.lastHit = 0;
-  this.speed = 10;
+  this.speed = 5;
 
   this.draw = function() {};
 
@@ -104,12 +104,11 @@ Player.prototype.step = function(dt) {
   if(Game.keys['left']) { this.x -= 100 * dt; }
   if(Game.keys['right']) { this.x += 100 * dt; }
 
-  if(this.x < 0) this.x = 0;
-  if(this.x > Game.width-this.w) this.x = Game.width-this.w;
-    
     if(Game.keys['up']) { this.y -= 100 * dt; }
   if(Game.keys['down']) { this.y += 100 * dt; }
 
+    if(this.x < 0) this.x = 0;
+  if(this.x > Game.width-this.w) this.x = Game.width-this.w;
   if(this.y < 0) this.y = 0;
   if(this.y > Game.height-this.h) this.y = Game.height-this.h;
 
@@ -120,7 +119,7 @@ Player.prototype.step = function(dt) {
     this.board.addSprite('missile',
                           this.x + this.w/2 - Sprites.map.missile.w/2,
                           this.y-this.h,
-                          { dy: -100, player: true });
+                          { dy: -150, player: true });
     this.board.missiles++;
     this.reloading = 10;
   }
