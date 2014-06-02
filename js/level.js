@@ -26,9 +26,9 @@
 // this changes how many alients per level. 1 is the white alien, 2 is the red one
 
   var spriteData = {
-    'alien1': { sx: 1,  sy: 0,  w: 49, h: 44, cls: Alien, frames: 1 },
-    'player': { sx: 3,  sy: 56, w: 49, h: 69, cls: Player },
-    'missile': { sx: 53,  sy: 65, w: 31,  h: 56, cls: Missile }
+    'alien1': { sx: 50,  sy: 7,  w: 40, h: 25, cls: Alien },
+    'player': { sx: 17,  sy: 43, w: 40, h: 48, cls: Player },
+    'missile': { sx: 78,  sy: 50, w: 24,  h: 42, cls: Missile }
   }
   
 //  positioning and adding new framing
