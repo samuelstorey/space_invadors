@@ -25,7 +25,7 @@ var Game = new function() {
   this.loop = function() { 
     Game.board.step(50/1000); 
     Game.board.render(Game.canvas);
-    setTimeout(Game.loop,10);
+    setTimeout(Game.loop,20);
       
 //      this is the bit that makes the game go faster
   };
@@ -57,11 +57,11 @@ var GameScreen = function GameScreen(text,text2,callback) {
 
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
-    canvas.font = "bold 40px arial";
+    canvas.font = "bold 45px space age";
     var measure = canvas.measureText(text);  
-    canvas.fillStyle = "#FFFFFF";
+    canvas.fillStyle = "FFA500";
     canvas.fillText(text,Game.width/2 - measure.width/2,Game.height/2);
-    canvas.font = "bold 20px arial";
+    canvas.font = "bold 20px space age";
     var measure2 = canvas.measureText(text2);
     canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
   };
@@ -117,7 +117,7 @@ var GameBoard = function GameBoard(level_number) {
     this.iterate(function() { this.draw(canvas); });
       
    var scoretext = "Score: " + this.score;
-   canvas.font="20px Georgia";
+   canvas.font="30px space age";
       canvas.fillText(scoretext,10,50);
   };
 

@@ -56,7 +56,7 @@ Alien.prototype.draw = function(canvas) {
 
 Alien.prototype.die = function() {
   GameAudio.play('die');
-  this.flock.speed += 1;
+  this.flock.speed += 0.5;
   this.board.remove(this);
     this.board.score++;
 }
