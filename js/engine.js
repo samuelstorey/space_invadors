@@ -1,5 +1,5 @@
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 38:'up', 40:'down'}; 
+  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 38:'up', 40:'down'}; // added code to allow the game to move up and down
   this.keys = {};
   this.initialize = function(canvas_dom,level_data,sprite_data,callbacks) {
     this.canvas_elem = $(canvas_dom)[0];
@@ -25,9 +25,9 @@ var Game = new function() {
   this.loop = function() { 
     Game.board.step(50/1000); 
     Game.board.render(Game.canvas);
-    setTimeout(Game.loop,20);
+    setTimeout(Game.loop,15);
       
-//      this is the bit that makes the game go faster
+//      Changed the overall speed of the game
   };
 };
 
@@ -41,7 +41,7 @@ var Sprites = new function() {
     this.image.src = 'images/sprites.png';
   };
     
-//    orange is for the images of the aliens
+//    Changed sprites
 
   this.draw = function(canvas,sprite,x,y,frame) {
     var s = this.map[sprite];
@@ -66,9 +66,9 @@ var GameScreen = function GameScreen(text,text2,callback) {
     canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
   };
 };
-
+// Changed the size and font of the writing
 var GameBoard = function GameBoard(level_number) {
-    this.score = 0;
+    this.score = 0; //added scoreboard
   this.removed_objs = [];
   this.missiles = 0;
   this.level = level_number;
@@ -120,7 +120,7 @@ var GameBoard = function GameBoard(level_number) {
    canvas.font="30px space age";
       canvas.fillText(scoretext,10,50);
   };
-
+// Changed the size and font of writing
   this.collision = function(o1,o2) {
     return !((o1.y+o1.h-1<o2.y) || (o1.y>o2.y+o2.h-1) ||
              (o1.x+o1.w-1<o2.x) || (o1.x>o2.x+o2.w-1));

@@ -3,7 +3,9 @@ var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
   this.dx = 10; this.dy = 0;
   this.hit = 1; this.lastHit = 0;
-  this.speed = 5;
+  this.speed = 10;
+    
+    // Changed the speed of the alien attack rate
 
   this.draw = function() {};
 
@@ -56,12 +58,13 @@ Alien.prototype.draw = function(canvas) {
 
 Alien.prototype.die = function() {
   GameAudio.play('die');
-  this.flock.speed += 0.5;
+  this.flock.speed += 0;
   this.board.remove(this);
     this.board.score++;
 }
 
-//the speed changes how fast the alien gets if it dies etc.
+// Added score board
+// Changed the flock speed to zero to prevent the aliens from moving down the screen too fast
 
 Alien.prototype.step = function(dt) {
   this.mx += dt * this.flock.dx;
@@ -80,13 +83,13 @@ Alien.prototype.step = function(dt) {
 }
 
 Alien.prototype.fireSometimes = function() {
-      if(Math.random()*100 < 10) {
+      if(Math.random()*100 < 25) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
       }
 }
-
+// Changed the speed of when the aliens fire at the ship
 var Player = function Player(opts) { 
   this.reloading = 0;
 }
@@ -108,10 +111,12 @@ Player.prototype.step = function(dt) {
     if(Game.keys['up']) { this.y -= 100 * dt; }
   if(Game.keys['down']) { this.y += 100 * dt; }
 
+    // Added code to allow the ship to move up and down along the game screen
+    
     if(this.x < 0) this.x = 0;
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
   if(this.y < 0) this.y = 0;
-  if(this.y > Game.height-this.h) this.y = Game.height-this.h;
+  ifx(this.y > Game.height-this.h) this.y = Game.height-this.h;
 
   this.reloading--;
 
