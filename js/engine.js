@@ -1,5 +1,5 @@
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 38:'up', 40:'down'}; 
+  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 38:'up', 40:'down'}; // Added up and down function
   this.keys = {};
   this.initialize = function(canvas_dom,level_data,sprite_data,callbacks) {
     this.canvas_elem = $(canvas_dom)[0];
@@ -39,7 +39,7 @@ var Sprites = new function() {
     this.image.onload = callback;
     this.image.src = 'images/sprites.png';
   };
-    
+    // Changed sprites
 
   this.draw = function(canvas,sprite,x,y,frame) {
     var s = this.map[sprite];
@@ -63,6 +63,8 @@ var GameScreen = function GameScreen(text,text2,callback) {
     var measure2 = canvas.measureText(text2);
     canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
   };
+    
+    // Changed font size and added new font
 };
 var GameBoard = function GameBoard(level_number) {
     this.score = 0; 
@@ -114,7 +116,7 @@ var GameBoard = function GameBoard(level_number) {
     this.iterate(function() { this.draw(canvas); });
       
    var scoretext = "Score: " + this.score;
-   canvas.font="30px space age";
+   canvas.font="30px space age"; // added new font and changed size
       canvas.fillText(scoretext,10,50);
   };
   this.collision = function(o1,o2) {

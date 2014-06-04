@@ -60,12 +60,14 @@
           [0,0,0,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,0,0,0,0]] };
 
-
+// Constructed the levels to include more aliens to make it harder
   var spriteData = {
     'alien1': { sx: 38,  sy: 9,  w: 42, h: 28, cls: Alien },
     'player': { sx: 9,  sy: 43, w: 42, h: 54, cls: Player },
     'missile': { sx: 109,  sy: 55, w: 42,  h: 36, cls: Missile }
   }
+  
+  // Added new sprite sheets and details to position correctly 
   
 
   function startGame() {
@@ -87,12 +89,12 @@
 
 
   function winGame() {
-    var screen = new GameScreen("You Win!","(press space to restart)",
+    var screen = new GameScreen("You Win!","(press space to restart)", // Changed text
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });
     Game.loadBoard(screen);
-  }
+  } // Changed text
   $(function() {
     GameAudio.load({ 'fire' : 'media/laser.ogg', 'die' : 'media/explosion.ogg' }, 
                    function() { 
@@ -102,3 +104,4 @@
                                         "win"  : winGame });
                    });
    });
+// Changed sounds for laser and explosions

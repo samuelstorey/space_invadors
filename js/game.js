@@ -4,6 +4,8 @@ var AlienFlock = function AlienFlock() {
   this.dx = 10; this.dy = 0;
   this.hit = 1; this.lastHit = 0;
   this.speed = 10;
+    
+    // Changed the speed of the alien attack rate
 
   this.draw = function() {};
 
@@ -61,6 +63,9 @@ Alien.prototype.die = function() {
      this.board.score++;
 }
 
+// Added score board
+// Changed flock speed to prevent the aliens going off the screen too fast
+
 Alien.prototype.step = function(dt) {
   this.mx += dt * this.flock.dx;
   this.y += this.flock.dy;
@@ -85,6 +90,9 @@ Alien.prototype.fireSometimes = function() {
       }
 }
 
+// Changed the speed of the aliens attack rate
+
+
 var Player = function Player(opts) { 
   this.reloading = 0;
 }
@@ -106,7 +114,7 @@ Player.prototype.step = function(dt) {
      if(Game.keys['up']) { this.y -= 100 * dt; }
   if(Game.keys['down']) { this.y += 100 * dt; }
  
-
+// Added the function to make the game go up and down
 
   if(this.x < 0) this.x = 0;
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
