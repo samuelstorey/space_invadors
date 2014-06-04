@@ -60,7 +60,6 @@
           [0,0,0,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,0,0,0,0]] };
 
-// Constructed the levels by adding more aliens to each level to make it harder
 
   var spriteData = {
     'alien1': { sx: 38,  sy: 9,  w: 42, h: 28, cls: Alien },
@@ -68,7 +67,6 @@
     'missile': { sx: 109,  sy: 55, w: 42,  h: 36, cls: Missile }
   }
   
-//  Added new sprites and details to position correctly
 
   function startGame() {
     var screen = new GameScreen("Alien Invaders","press space to start",
@@ -95,7 +93,6 @@
                                  });
     Game.loadBoard(screen);
   }
-// Changed text
   $(function() {
     GameAudio.load({ 'fire' : 'media/laser.ogg', 'die' : 'media/explosion.ogg' }, 
                    function() { 
@@ -105,6 +102,3 @@
                                         "win"  : winGame });
                    });
    });
-
-//sound
- // Added new sounds for the lazer and explosion

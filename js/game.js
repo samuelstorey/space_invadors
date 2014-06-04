@@ -4,8 +4,6 @@ var AlienFlock = function AlienFlock() {
   this.dx = 10; this.dy = 0;
   this.hit = 1; this.lastHit = 0;
   this.speed = 10;
-    
-    // Changed the speed of the alien attack rate
 
   this.draw = function() {};
 
@@ -60,11 +58,8 @@ Alien.prototype.die = function() {
   GameAudio.play('die');
   this.flock.speed += 0;
   this.board.remove(this);
-    this.board.score++;
+     this.board.score++;
 }
-
-// Added score board
-// Changed the flock speed to zero to prevent the aliens from moving down the screen too fast
 
 Alien.prototype.step = function(dt) {
   this.mx += dt * this.flock.dx;
@@ -75,7 +70,7 @@ Alien.prototype.step = function(dt) {
     }
     this.x += this.mx;
     this.mx = 0;
-    this.frame = (this.frame) % 2;
+    this.frame = (this.frame+0) % 2;
     if(this.x > Game.width - Sprites.map.alien1.w * 2) this.flock.hit = -1;
     if(this.x < Sprites.map.alien1.w) this.flock.hit = 1;
   }
@@ -83,13 +78,13 @@ Alien.prototype.step = function(dt) {
 }
 
 Alien.prototype.fireSometimes = function() {
-      if(Math.random()*100 < 25) {
+      if(Math.random()*100 < 10) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
       }
 }
-// Changed the speed of when the aliens fire at the ship
+
 var Player = function Player(opts) { 
   this.reloading = 0;
 }
@@ -107,16 +102,14 @@ Player.prototype.die = function() {
 Player.prototype.step = function(dt) {
   if(Game.keys['left']) { this.x -= 100 * dt; }
   if(Game.keys['right']) { this.x += 100 * dt; }
-
-    if(Game.keys['up']) { this.y -= 100 * dt; }
-  if(Game.keys['down']) { this.y += 100 * dt; }
-
-    // Added code to allow the ship to move up and down along the game screen
     
-    if(this.x < 0) this.x = 0;
+     if(Game.keys['up']) { this.y -= 100 * dt; }
+  if(Game.keys['down']) { this.y += 100 * dt; }
+ 
+
+
+  if(this.x < 0) this.x = 0;
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
-  if(this.y < 0) this.y = 0;
-  ifx(this.y > Game.height-this.h) this.y = Game.height-this.h;
 
   this.reloading--;
 
@@ -125,7 +118,7 @@ Player.prototype.step = function(dt) {
     this.board.addSprite('missile',
                           this.x + this.w/2 - Sprites.map.missile.w/2,
                           this.y-this.h,
-                          { dy: -150, player: true });
+                          { dy: -100, player: true });
     this.board.missiles++;
     this.reloading = 10;
   }
